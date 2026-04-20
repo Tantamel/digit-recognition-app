@@ -40,7 +40,7 @@ def process_folder():
     shutil.copytree(original_path, copy_path)
     path = copy_path
 
-    # очистка таблицы
+    
     for item in tree.get_children():
         tree.delete(item)
 
@@ -66,10 +66,8 @@ def process_folder():
 
         filename = os.path.basename(file_path)
 
-        # 🔥 ВАЖНО — теперь вся магия тут
         number, status, conf = process_image(file_path)
 
-        # --- если не распознали ---
         if not number:
             new_name = "!" + filename
             temp_results.append((filename, new_name, status))
